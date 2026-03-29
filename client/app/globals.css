@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+/* Register fonts in Tailwind v4 theme system */
+@theme {
+  --font-sans: var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-syne), "Syne", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --bg-color: #050505;
+  --text-color: #ffffff;
+  --liquid-1: #4f00ff;
+  --liquid-2: #ff0055;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Hide custom cursor on touch devices, show on pointer devices */
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+}
+
+/* Hide cursor elements entirely on touch devices */
+@media (pointer: coarse) {
+  .cursor-dot,
+  .cursor-outline {
+    display: none !important;
+  }
+}
+
+h1,
+h2,
+h3,
+.bold-text {
+  font-family: var(--font-syne), "Syne", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Hide scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Gooey SVG filter targeting — desktop only to avoid blur on mobile */
+@media (min-width: 768px) {
+  .gooey-filter {
+    filter: url("#goo");
+  }
+}
+
+/* Liquid Orb — sits behind content but above body background */
+.liquid-orb {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 70vw;
+  height: 70vw;
+  background: linear-gradient(135deg, var(--liquid-1), var(--liquid-2));
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(60px);
+  opacity: 0.35;
+  z-index: 0;
+  pointer-events: none;
+  animation: morph 15s infinite alternate ease-in-out;
+  transition: top 0.2s ease-out, left 0.2s ease-out;
+}
+
+@media (min-width: 768px) {
+  .liquid-orb {
+    width: 40vw;
+    height: 40vw;
+    filter: blur(80px);
+    opacity: 0.5;
+  }
+}
+
+@keyframes morph {
+  0% {
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: translate(-50%, -50%) rotate(360deg) scale(1.2);
+  }
+}
+
+/* Custom Cursor */
+.cursor-dot {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+}
+
+.cursor-outline {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border: 1px solid white;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s;
+  mix-blend-mode: difference;
+}
+
+/* Scrollytelling Reveal Text */
+.reveal-text .word {
+  opacity: 0.2;
+  transition: opacity 0.1s;
+}
+
+/* Outline text style */
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1px white;
+}
+
+@media (min-width: 768px) {
+  .outline-text {
+    -webkit-text-stroke: 2px white;
+  }
+}
+
+/* Horizontal Scroll Services */
+.services-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+/* On mobile: vertical scroll, each panel stacked */
+@media (max-width: 768px) {
+  .services-wrapper {
+    width: 100%;
+    flex-direction: column;
+  }
+  .service-panel {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 4rem 1.5rem;
+  }
+}
+
+/* On desktop: horizontal scroll panels */
+@media (min-width: 769px) {
+  .services-wrapper {
+    width: 500vw;
+  }
+  .service-panel {
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+.service-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}

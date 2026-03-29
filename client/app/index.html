@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAHAR STUDIOS | Bold & Liquid</title>
+    
+    <!-- Google Fonts: Syne for big bold headers, Inter for readable text -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-color: #ffffff;
+            --liquid-1: #4f00ff;
+            --liquid-2: #ff0055;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            cursor: none; /* Custom cursor */
+        }
+
+        h1, h2, h3, .bold-text {
+            font-family: 'Syne', sans-serif;
+        }
+
+        /* Hide scrollbar for a cleaner look */
+        ::-webkit-scrollbar { display: none; }
+
+        /* Liquid Background & Gooey Effect */
+        .gooey-filter {
+            filter: url('#goo');
+        }
+
+        .liquid-orb {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 40vw;
+            height: 40vw;
+            background: linear-gradient(135deg, var(--liquid-1), var(--liquid-2));
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(80px);
+            opacity: 0.5;
+            z-index: -1;
+            animation: morph 15s infinite alternate ease-in-out;
+            transition: top 0.2s ease-out, left 0.2s ease-out;
+        }
+
+        @keyframes morph {
+            0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: translate(-50%, -50%) rotate(360deg) scale(1.2); }
+        }
+
+        /* Custom Cursor */
+        .cursor-dot {
+            position: fixed;
+            width: 12px; height: 12px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
+        }
+        .cursor-outline {
+            position: fixed;
+            width: 40px; height: 40px;
+            border: 1px solid white;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s;
+            mix-blend-mode: difference;
+        }
+
+        /* Hover effects */
+        a:hover ~ .cursor-outline, .hover-target:hover ~ .cursor-outline {
+            width: 80px; height: 80px; background: rgba(255,255,255,0.1);
+        }
+
+        /* Scrollytelling Reveal Text */
+        .reveal-text span {
+            opacity: 0.2;
+            transition: opacity 0.1s;
+        }
+
+        /* Horizontal Scroll Sections */
+        .services-wrapper {
+            width: 500vw; /* 5 panels */
+            display: flex;
+            flex-wrap: nowrap;
+        }
+        .service-panel {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .outline-text {
+            color: transparent;
+            -webkit-text-stroke: 2px white;
+        }
+
+    </style>
+</head>
+<body class="antialiased selection:bg-fuchsia-600 selection:text-white">
+
+    <!-- SVG Gooey Filter Definition -->
+    <svg style="position: absolute; width: 0; height: 0;">
+        <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+            <feBlend in="SourceGraphic" in2="goo" />
+        </filter>
+    </svg>
+
+    <!-- Liquid Background Elements -->
+    <div class="liquid-orb" id="follower-orb"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full p-8 flex justify-between items-center z-50 mix-blend-difference">
+        <div class="text-2xl font-bold tracking-tighter hover-target">SAHAR<br>STUDIOS</div>
+        <div class="text-sm uppercase tracking-widest cursor-pointer hover-target">Menu</div>
+    </nav>
+
+    <main id="smooth-wrapper">
+        <div id="smooth-content">
+            
+            <!-- Hero Section -->
+            <section class="h-screen flex flex-col justify-center items-center relative gooey-filter">
+                <h1 class="text-[12vw] leading-none text-center uppercase tracking-tighter font-extrabold relative z-10 hero-text">
+                    <span class="block transform translate-y-20 opacity-0">Fluid</span>
+                    <span class="block outline-text transform translate-y-20 opacity-0">Creativity</span>
+                </h1>
+                <div class="absolute bottom-10 left-10 text-sm tracking-widest uppercase opacity-50">
+                    Scroll to explore
+                </div>
+            </section>
+
+            <!-- Scrollytelling About Section -->
+            <section class="min-h-screen flex items-center justify-center p-10 z-10 bg-black/40 backdrop-blur-md">
+                <div class="max-w-6xl mx-auto">
+                    <p class="text-[4vw] leading-tight font-bold reveal-text" id="about-text">
+                        We are a digital powerhouse. Blending cutting-edge videography, immersive podcasts, precision video editing, striking poster design, and data-driven digital marketing. We don't just follow trends; we create the liquid current that shapes the future.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Horizontal Scroll Services Section -->
+            <section class="services-container h-screen overflow-hidden bg-zinc-950">
+                <div class="services-wrapper h-full">
+                    
+                    <!-- Panel 1 -->
+                    <div class="service-panel px-10">
+                        <div class="w-1/2 parallax-element">
+                            <h2 class="text-[8vw] leading-none uppercase outline-text">Videography</h2>
+                            <p class="text-xl mt-6 max-w-md text-gray-400">Cinematic storytelling that captures the essence of your brand in breathtaking 4K/8K resolution.</p>
+                        </div>
+                        <div class="w-1/2 h-2/3 bg-gray-900 rounded-3xl overflow-hidden relative parallax-img">
+                            <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&q=80" alt="Video" class="w-full h-full object-cover opacity-60 mix-blend-luminosity hover:mix-blend-normal transition duration-700">
+                        </div>
+                    </div>
+
+                    <!-- Panel 2 -->
+                    <div class="service-panel px-10">
+                        <div class="w-1/2 parallax-element">
+                            <h2 class="text-[8vw] leading-none uppercase outline-text">Podcasts</h2>
+                            <p class="text-xl mt-6 max-w-md text-gray-400">End-to-end production, crystal clear audio, and set design to make your voice resonate globally.</p>
+                        </div>
+                        <div class="w-1/2 h-2/3 bg-gray-900 rounded-3xl overflow-hidden relative parallax-img">
+                            <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&q=80" alt="Podcast" class="w-full h-full object-cover opacity-60 mix-blend-luminosity hover:mix-blend-normal transition duration-700">
+                        </div>
+                    </div>
+
+                    <!-- Panel 3 -->
+                    <div class="service-panel px-10">
+                        <div class="w-1/2 parallax-element">
+                            <h2 class="text-[8vw] leading-none uppercase outline-text">Video Editing</h2>
+                            <p class="text-xl mt-6 max-w-md text-gray-400">Seamless transitions, vibrant color grading, and dynamic pacing. We turn raw footage into masterpieces.</p>
+                        </div>
+                        <div class="w-1/2 h-2/3 bg-gray-900 rounded-3xl overflow-hidden relative parallax-img">
+                            <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&q=80" alt="Editing" class="w-full h-full object-cover opacity-60 mix-blend-luminosity hover:mix-blend-normal transition duration-700">
+                        </div>
+                    </div>
+
+                    <!-- Panel 4 -->
+                    <div class="service-panel px-10">
+                        <div class="w-1/2 parallax-element">
+                            <h2 class="text-[8vw] leading-none uppercase outline-text">Posters</h2>
+                            <p class="text-xl mt-6 max-w-md text-gray-400">Bold, rule-breaking graphic design and poster art that commands attention and stops scrollers dead.</p>
+                        </div>
+                        <div class="w-1/2 h-2/3 bg-gray-900 rounded-3xl overflow-hidden relative parallax-img">
+                            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80" alt="Posters" class="w-full h-full object-cover opacity-60 mix-blend-luminosity hover:mix-blend-normal transition duration-700">
+                        </div>
+                    </div>
+
+                    <!-- Panel 5 -->
+                    <div class="service-panel px-10">
+                        <div class="w-1/2 parallax-element">
+                            <h2 class="text-[8vw] leading-none uppercase outline-text">Digital Mktg</h2>
+                            <p class="text-xl mt-6 max-w-md text-gray-400">Data-backed liquid strategies that adapt to algorithms and flood your brand with conversions.</p>
+                        </div>
+                        <div class="w-1/2 h-2/3 bg-gray-900 rounded-3xl overflow-hidden relative parallax-img">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80" alt="Marketing" class="w-full h-full object-cover opacity-60 mix-blend-luminosity hover:mix-blend-normal transition duration-700">
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Massive Footer -->
+            <footer class="h-screen flex flex-col justify-center items-center bg-[#050505] relative overflow-hidden gooey-filter">
+                <div class="absolute w-full h-full top-0 left-0 bg-[linear-gradient(to_top,rgb(112,26,117,0.2),transparent)]"></div>
+                <h2 class="text-[15vw] leading-none uppercase tracking-tighter hover-target cursor-pointer mix-blend-difference z-10 transition-transform duration-500 hover:scale-105">
+                    Let's Talk
+                </h2>
+                <div class="mt-10 flex gap-10 text-xl z-10">
+                    <a href="#" class="hover:text-fuchsia-500 transition-colors hover-target">Instagram</a>
+                    <a href="#" class="hover:text-fuchsia-500 transition-colors hover-target">Twitter</a>
+                    <a href="#" class="hover:text-fuchsia-500 transition-colors hover-target">LinkedIn</a>
+                </div>
+                <div class="absolute bottom-5 text-gray-600 text-sm">© 2026 SAHAR STUDIOS. All rights reserved.</div>
+            </footer>
+
+        </div>
+    </main>
+
+    <!-- Scripts: GSAP, ScrollTrigger, and Lenis (Smooth Scroll) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+
+    <script>
+        // 1. Initialize Lenis (Buttery Smooth Scroll)
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+            smooth: true,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Integrate Lenis with GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time)=>{ lenis.raf(time * 1000) });
+        gsap.ticker.lagSmoothing(0);
+
+        // 2. Custom Cursor & Liquid Orb Follower Logic
+        const cursorDot = document.getElementById('cursor-dot');
+        const cursorOutline = document.getElementById('cursor-outline');
+        const orb = document.getElementById('follower-orb');
+        
+        let mouseX = 0, mouseY = 0;
+        let orbX = 0, orbY = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // Instant dot
+            cursorDot.style.left = `${mouseX}px`;
+            cursorDot.style.top = `${mouseY}px`;
+            
+            // Slight delay outline
+            setTimeout(() => {
+                cursorOutline.style.left = `${mouseX}px`;
+                cursorOutline.style.top = `${mouseY}px`;
+            }, 50);
+        });
+
+        // Animate liquid orb to lazily follow mouse
+        function animateOrb() {
+            orbX += (mouseX - orbX) * 0.05;
+            orbY += (mouseY - orbY) * 0.05;
+            orb.style.left = `${orbX}px`;
+            orb.style.top = `${orbY}px`;
+            requestAnimationFrame(animateOrb);
+        }
+        animateOrb();
+
+        // 3. Hero Animation
+        gsap.to('.hero-text span', {
+            y: 0,
+            opacity: 1,
+            duration: 1.5,
+            stagger: 0.2,
+            ease: "power4.out",
+            delay: 0.5
+        });
+
+        // 4. Scrollytelling (About Text Highlight)
+        const aboutText = new SplitType('#about-text', { types: 'words' });
+        gsap.to(aboutText.words, {
+            opacity: 1,
+            stagger: 0.1,
+            scrollTrigger: {
+                trigger: "#about-text",
+                start: "top 80%",
+                end: "bottom 40%",
+                scrub: 1,
+            }
+        });
+
+        // 5. Horizontal Scroll for Services
+        const servicePanels = gsap.utils.toArray('.service-panel');
+        
+        gsap.to(servicePanels, {
+            xPercent: -100 * (servicePanels.length - 1),
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".services-container",
+                pin: true,
+                scrub: 1,
+                snap: 1 / (servicePanels.length - 1),
+                end: () => "+=" + document.querySelector(".services-container").offsetWidth
+            }
+        });
+
+        // Adding slight parallax to images inside horizontal scroll
+        servicePanels.forEach((panel, i) => {
+            const img = panel.querySelector('img');
+            gsap.fromTo(img, 
+                { x: -50, scale: 1.2 },
+                { x: 50, scale: 1, 
+                  scrollTrigger: {
+                      trigger: panel,
+                      containerAnimation: gsap.getById("horizontal"), // Link to horiz scroll
+                      start: "left right",
+                      end: "right left",
+                      scrub: true
+                  }
+                }
+            );
+        });
+    </script>
+</body>
+</html>
