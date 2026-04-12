@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sahar Studios
 
-## Getting Started
+Welcome to the **Sahar Studios** project. This repository features the front-end code for our new landing page, bringing "Bold & Liquid" visual masterpieces to life in a digital experience.
 
-First, run the development server:
+## ✨ Features & Effects
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+We've specifically designed this page to showcase stunning visual effects, including:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Liquid Hover Effects**: Interactive, fluid distortions and liquid-like transitions that respond creatively to user input.
+- **Bold Typography**: Utilizing specialized fonts (`Inter` and `Syne`) to create a distinctive, impactful aesthetic.
+- **Modern Animations**: Smooth orchestrations that invite users deeper into the portfolio.
+- **Open Graph Ready**: Ensures perfect previews (with our custom OG Image) when links are shared on Twitter, LinkedIn, Discord, and other platforms.
+- **Responsive & Optimized**: A fast Next.js pipeline utilizing the App Router and optimized fonts.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project is built using [Next.js](https://nextjs.org/) and bootstrapped with `create-next-app`.
 
-## Learn More
+1. **Install dependencies:**
+   ```bash
+   npm install
+   # or yarn / pnpm / bun install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Start the development server:**
+   ```bash
+   npm run dev
+   # or yarn dev / pnpm dev
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **View the site:**
+   Open [http://localhost:3000](http://localhost:3000) with your browser to see the beautiful effects in action!
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ⚙️ Technical Details
 
-## Deploy on Vercel
+- **Framework:** Next.js (App Router)
+- **Styling:** Tailwind CSS & global overrides
+- **Typography:** `next/font` for optimal loading
+- **SEO & Metatags:** Open Graph logic is strictly integrated ensuring beautiful previews across the web.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*This document was updated to highlight the visual explorations and interactive elements built throughout the page. Start the dev server to experience them yourself!*
